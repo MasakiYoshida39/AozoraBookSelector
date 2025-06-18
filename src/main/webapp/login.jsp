@@ -16,5 +16,6 @@
             ${error}
         </c:if>
     </div>
+    <a href="register.jsp">新規ユーザー登録</a>
 </body>
 </html> 
