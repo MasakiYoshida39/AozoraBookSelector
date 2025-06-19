@@ -17,5 +17,8 @@
         </c:if>
     </div>
     <a href="register.jsp">新規ユーザー登録</a>
+    <% if ("1".equals(request.getParameter("logout"))) { %>
+        <div style="color:green">ログアウトしました。</div>
+    <% } %>
 </body>
 </html> 

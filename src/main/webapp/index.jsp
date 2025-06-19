@@ -14,5 +14,6 @@
 <body>
     <h2>ようこそ、<%= user %>さん！</h2>
     <p>ログインに成功しました。</p>
+    <a href="logout">ログアウト</a>
 </body>
 </html> 
