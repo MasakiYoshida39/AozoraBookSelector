@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class RegisterServlet extends HttpServlet {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/aozora_db?useSSL=false&serverTimezone=UTC";
     private static final String DB_USER = "root"; // 必要に応じて修正
-    private static final String DB_PASSWORD = "y19956030"; // 必要に応じて修正
+    private static final String DB_PASSWORD = ""; // 必要に応じて修正
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
