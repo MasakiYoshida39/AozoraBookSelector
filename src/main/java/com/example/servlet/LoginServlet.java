@@ -19,7 +19,7 @@ public class LoginServlet extends HttpServlet {
     // DB接続情報（必要に応じて修正してください）
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/aozora_db?useSSL=false&serverTimezone=UTC";
     private static final String DB_USER = "root"; // ←MySQLのユーザー名に合わせて修正
-    private static final String DB_PASSWORD = "y19956030"; // ←MySQLのパスワードに合わせて修正
+    private static final String DB_PASSWORD = ""; // ←MySQLのパスワードに合わせて修正
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

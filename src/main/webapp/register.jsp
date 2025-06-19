@@ -9,6 +9,7 @@
     <form method="post" action="register">
         <label>ユーザー名: <input type="text" name="username" required /></label><br />
         <label>パスワード: <input type="password" name="password" required /></label><br />
+        <label>パスワード（確認）: <input type="password" name="confirm_password" required /></label><br />
         <input type="submit" value="登録" />
     </form>
     <div style="color:red">

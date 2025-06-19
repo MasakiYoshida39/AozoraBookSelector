@@ -17,17 +17,20 @@ import jakarta.servlet.http.HttpServletResponse;
 public class RegisterServlet extends HttpServlet {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/aozora_db?useSSL=false&serverTimezone=UTC";
     private static final String DB_USER = "root"; // 必要に応じて修正
-    private static final String DB_PASSWORD = ""; // 必要に応じて修正
+    private static final String DB_PASSWORD = "y19956030"; // 必要に応じて修正
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("confirm_password");
         String error = null;
         String message = null;
 
-        if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
+        if (username == null || username.isEmpty() || password == null || password.isEmpty() || confirmPassword == null || confirmPassword.isEmpty()) {
             error = "ユーザー名とパスワードは必須です。";
+        } else if (!password.equals(confirmPassword)) {
+            error = "パスワードが一致しません。";
         } else {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
