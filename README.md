@@ -53,14 +53,17 @@ INSERT INTO users (username, password) VALUES ('user', 'pass');
 
 ### 4. データベース接続設定
 
-`src/main/java/com/example/servlet/LoginServlet.java` と  
-`src/main/java/com/example/servlet/RegisterServlet.java` の  
-以下の定数を実際のMySQL設定に合わせて修正：
+`src/main/java/com/example/servlet/DBConfig.java` でDB接続情報（ユーザー名・パスワード・データベース名）を一元管理しています。
 
 ```java
-private static final String DB_USER = "root"; // MySQLユーザー名
-private static final String DB_PASSWORD = "yourpassword"; // MySQLパスワード
+public class DBConfig {
+    public static final String JDBC_URL = "jdbc:mysql://localhost:3306/aozora_db?useSSL=false&serverTimezone=UTC";
+    public static final String DB_USER = "root"; // MySQLユーザー名
+    public static final String DB_PASSWORD = ""; // MySQLパスワード（空の場合は空文字）
+}
 ```
+
+**MySQLのユーザー名やパスワード、データベース名を変更したい場合は、このファイルのみ編集してください。**
 
 ### 5. プロジェクト実行
 
