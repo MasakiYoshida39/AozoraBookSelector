@@ -15,5 +15,6 @@
     <h2>ようこそ、<%= user %>さん！</h2>
     <p>ログインに成功しました。</p>
     <a href="logout">ログアウト</a>
+    <a href="edit.jsp">ユーザー情報編集</a><br />
 </body>
 </html> 
