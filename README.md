@@ -92,15 +92,18 @@ AozoraBookSelector/
 │   └── main/
 │       ├── java/
 │       │   └── com/example/servlet/
+│       │       ├── DBConfig.java      ← DB接続情報はここで一元管理
 │       │       ├── LoginServlet.java
-│       │       └── RegisterServlet.java
+│       │       ├── RegisterServlet.java
+│       │       ├── EditServlet.java
+│       │       └── LogoutServlet.java
 │       └── webapp/
-│           ├── WEB-INF/
-│           │   ├── lib/ (JDBCドライバ配置場所)
-│           │   └── web.xml
 │           ├── index.jsp
 │           ├── login.jsp
-│           └── register.jsp
+│           ├── register.jsp
+│           ├── edit.jsp
+│           └── WEB-INF/
+│               └── web.xml
 └── README.md
 ```
 
