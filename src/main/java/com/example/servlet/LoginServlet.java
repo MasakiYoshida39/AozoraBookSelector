@@ -13,13 +13,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import static com.example.servlet.DBConfig.*;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-    // DB接続情報（必要に応じて修正してください）
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/aozora_db?useSSL=false&serverTimezone=UTC";
-    private static final String DB_USER = "root"; // ←MySQLのユーザー名に合わせて修正
-    private static final String DB_PASSWORD = ""; // ←MySQLのパスワードに合わせて修正
+    // DB接続情報（DBConfigから取得）
+    // private static final String JDBC_URL = ...
+    // private static final String DB_USER = ...
+    // private static final String DB_PASSWORD = ...
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -14,12 +14,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import static com.example.servlet.DBConfig.*;
+
 @WebServlet("/edit")
 public class EditServlet extends HttpServlet {
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/aozora_db?useSSL=false&serverTimezone=UTC";
-    private static final String DB_USER = "root"; // 必要に応じて修正
-    private static final String DB_PASSWORD = ""; // 必要に応じて修正
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
