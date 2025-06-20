@@ -1,140 +1,138 @@
 # AozoraBookSelector
 
-青空文庫からランダムに書籍を選択するJava Webアプリケーションです。
+青空文庫関連の書籍選択・管理を行うWebアプリケーションです。
+
+## 概要
+
+- **技術スタック**: Java (Jakarta EE), JSP, MySQL
+- **フレームワーク**: Servlet/JSP
+- **データベース**: MySQL
+- **Webサーバー**: Tomcat (推奨)
 
 ## 機能
 
-- ユーザー登録・ログイン機能
-- 青空文庫からのランダム書籍選択
-- 書籍情報の表示（タイトル、著者、HTMLファイルURL）
+- ユーザー認証（ログイン・ログアウト）
+- 新規ユーザー登録
 - セッション管理
 
-## 使用技術
+## セットアップ手順
 
-- **Java Servlet/JSP** (Jakarta EE)
-- **MySQL** (ユーザー認証)
-- **青空文庫API** ([goark/aozora-api](https://github.com/goark/aozora-api))
+### 1. 必要な環境
 
-## APIについて
+- Java 17以上
+- MySQL 8.0以上
+- Tomcat 10以上
+- Eclipse IDE (推奨)
 
-このアプリケーションは以下のAPIを使用しています：
+### 2. データベース設定
 
-### 主要API: goark/aozora-api
-- **URL**: `https://aozora-api.linhvu.dev/books`
-- **形式**: RESTful API
-- **言語**: Go言語で実装
-- **特徴**: 
-  - 公式的なAPIサービス
-  - 豊富な書籍データ
-  - 安定した動作
-  - JSON形式のレスポンス
-
-### 代替API
-- **ZORAPI**: `https://api.bungomail.com/v0/books?limit=20`
-- **作者別API**: `https://aozora-api.linhvu.dev/authors`
-
-## セットアップ
-
-### 1. データベース設定
-
-MySQLでデータベースとテーブルを作成：
-
+#### データベース作成
 ```sql
-CREATE DATABASE aozora_book_selector;
-USE aozora_book_selector;
+CREATE DATABASE aozora_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE aozora_db;
+```
 
+#### ユーザーテーブル作成
+```sql
 CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    email VARCHAR(100),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL
 );
 ```
 
-### 2. データベース接続設定
+#### テストユーザー追加（オプション）
+```sql
+INSERT INTO users (username, password) VALUES ('user', 'pass');
+```
 
-`src/main/java/com/example/util/DatabaseConfig.java` でデータベース接続情報を設定：
+### 3. JDBCドライバ配置
+
+1. [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/) をダウンロード
+2. `mysql-connector-j-8.0.xx.jar` を `src/main/webapp/WEB-INF/lib/` に配置
+
+### 4. データベース接続設定
+
+`src/main/java/com/example/servlet/DBConfig.java` でDB接続情報（ユーザー名・パスワード・データベース名）を一元管理しています。
 
 ```java
-public class DatabaseConfig {
-    public static final String URL = "jdbc:mysql://localhost:3306/aozora_book_selector";
-    public static final String USERNAME = "your_username";
-    public static final String PASSWORD = "your_password";
+public class DBConfig {
+    public static final String JDBC_URL = "jdbc:mysql://localhost:3306/aozora_db?useSSL=false&serverTimezone=UTC";
+    public static final String DB_USER = "root"; // MySQLユーザー名
+    public static final String DB_PASSWORD = ""; // MySQLパスワード（空の場合は空文字）
 }
 ```
 
-### 3. プロジェクトの実行
+**MySQLのユーザー名やパスワード、データベース名を変更したい場合は、このファイルのみ編集してください。**
 
-1. Eclipseでプロジェクトをインポート
-2. Tomcatサーバーを設定
-3. プロジェクトを実行
+### 5. プロジェクト実行
+
+1. Eclipseでプロジェクトを開く
+2. Tomcatサーバーを設定・起動
+3. ブラウザで `http://localhost:8080/AozoraBookSelector/` にアクセス
 
 ## 使用方法
 
-1. **ユーザー登録**: `/register.jsp` でアカウントを作成
-2. **ログイン**: `/login.jsp` でログイン
-3. **書籍選択**: `/book-selector.jsp` でランダム書籍を取得
-4. **書籍閲覧**: 表示されたHTMLファイルURLから青空文庫で読書
+### ログイン
+1. ログイン画面でユーザー名・パスワードを入力
+2. 「ログイン」ボタンをクリック
+3. 認証成功時はメインページに遷移
 
-## ファイル構成
+### 新規ユーザー登録
+1. ログイン画面の「新規ユーザー登録」リンクをクリック
+2. ユーザー名・パスワードを入力
+3. 「登録」ボタンをクリック
+4. 登録成功時はログイン画面に戻る
+
+## プロジェクト構成
 
 ```
-src/main/
-├── java/com/example/
-│   ├── servlet/
-│   │   ├── LoginServlet.java
-│   │   ├── RegisterServlet.java
-│   │   ├── LogoutServlet.java
-│   │   ├── UserEditServlet.java
-│   │   └── BookSelectorServlet.java
-│   ├── model/
-│   │   ├── User.java
-│   │   └── Book.java
-│   └── util/
-│       └── DatabaseConfig.java
-└── webapp/
-    ├── WEB-INF/
-    │   └── web.xml
-    ├── login.jsp
-    ├── register.jsp
-    ├── dashboard.jsp
-    ├── user-edit.jsp
-    ├── book-selector.jsp
-    └── book-result.jsp
-```
-
-## APIレスポンス形式
-
-### goark/aozora-api
-```json
-[
-  {
-    "book_id": 123,
-    "title": "作品タイトル",
-    "authors": [
-      {
-        "last_name": "姓",
-        "first_name": "名"
-      }
-    ],
-    "html_url": "https://www.aozora.gr.jp/cards/.../files/...html"
-  }
-]
+AozoraBookSelector/
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/example/servlet/
+│       │       ├── DBConfig.java      ← DB接続情報はここで一元管理
+│       │       ├── LoginServlet.java
+│       │       ├── RegisterServlet.java
+│       │       ├── EditServlet.java
+│       │       └── LogoutServlet.java
+│       └── webapp/
+│           ├── index.jsp
+│           ├── login.jsp
+│           ├── register.jsp
+│           ├── edit.jsp
+│           └── WEB-INF/
+│               └── web.xml
+└── README.md
 ```
 
 ## 注意事項
 
-- APIの利用制限やレート制限に注意してください
-- ネットワーク接続が必要です
-- APIが利用できない場合は、サンプルデータが表示されます
+- パスワードは平文で保存されています（実運用ではハッシュ化を推奨）
+- データベース接続情報はハードコーディングされています
+- セキュリティ機能は最小限です
+
+## トラブルシューティング
+
+### よくあるエラー
+
+1. **Access denied for user 'root'@'localhost'**
+   - MySQLのユーザー名・パスワードが正しく設定されているか確認
+
+2. **No database selected**
+   - JDBC接続URLにデータベース名が含まれているか確認
+
+3. **ClassNotFoundException: com.mysql.cj.jdbc.Driver**
+   - JDBCドライバが正しく配置されているか確認
+
+## 今後の拡張予定
+
+- ログアウト機能
+- パスワードハッシュ化
+- 書籍管理機能
+- 検索機能
 
 ## ライセンス
 
-このプロジェクトはMITライセンスの下で公開されています。
-
-## 参考リンク
-
-- [青空文庫](https://www.aozora.gr.jp/)
-- [goark/aozora-api](https://github.com/goark/aozora-api)
-- [ZORAPI](https://api.bungomail.com/) 
+このプロジェクトはMITライセンスの下で公開されています。 

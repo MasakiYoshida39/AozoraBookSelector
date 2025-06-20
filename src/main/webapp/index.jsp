@@ -16,6 +16,5 @@
     <p>ログインに成功しました。</p>
     <a href="logout">ログアウト</a>
     <a href="edit.jsp">ユーザー情報編集</a><br />
-    <a href="book-selector">ランダム書籍選択</a><br />
 </body>
 </html> 
