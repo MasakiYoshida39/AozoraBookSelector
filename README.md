@@ -8,14 +8,12 @@
 - **フレームワーク**: Servlet/JSP
 - **データベース**: MySQL
 - **Webサーバー**: Tomcat (推奨)
-- **外部API**: [青空文庫API (ZORAPI)](https://api.bungomail.com/)
 
 ## 機能
 
 - ユーザー認証（ログイン・ログアウト）
 - 新規ユーザー登録
 - セッション管理
-- **ランダム書籍取得** - 青空文庫APIからランダムに書籍を取得・表示
 
 ## セットアップ手順
 
@@ -86,13 +84,6 @@ public class DBConfig {
 3. 「登録」ボタンをクリック
 4. 登録成功時はログイン画面に戻る
 
-### ランダム書籍取得
-1. メインページの「ランダム書籍」カードをクリック
-2. 青空文庫APIからランダムに選ばれた書籍が表示されます
-3. 書籍の詳細情報（タイトル、著者、書き出しなど）を確認
-4. 「別の書籍を取得」ボタンで新しい書籍を取得可能
-5. 図書カード、HTML版、テキスト版へのリンクも利用可能
-
 ## プロジェクト構成
 
 ```
@@ -105,35 +96,22 @@ AozoraBookSelector/
 │       │       ├── LoginServlet.java
 │       │       ├── RegisterServlet.java
 │       │       ├── EditServlet.java
-│       │       ├── LogoutServlet.java
-│       │       └── RandomBookServlet.java ← ランダム書籍取得機能
+│       │       └── LogoutServlet.java
 │       └── webapp/
-│           ├── index.jsp              ← メインページ（モダンUI）
+│           ├── index.jsp
 │           ├── login.jsp
 │           ├── register.jsp
 │           ├── edit.jsp
-│           ├── random-book.jsp        ← ランダム書籍表示ページ
 │           └── WEB-INF/
 │               └── web.xml
 └── README.md
 ```
-
-## 外部APIについて
-
-このアプリケーションは[青空文庫API (ZORAPI)](https://api.bungomail.com/)を使用しています。
-
-- **APIエンドポイント**: `https://api.bungomail.com/v0`
-- **使用機能**: 書籍検索API (`/books`)
-- **データソース**: 青空文庫の作品データ
-
-APIの詳細については[公式ドキュメント](https://api.bungomail.com/)をご参照ください。
 
 ## 注意事項
 
 - パスワードは平文で保存されています（実運用ではハッシュ化を推奨）
 - データベース接続情報はハードコーディングされています
 - セキュリティ機能は最小限です
-- 外部APIへの依存があるため、APIの利用制限や障害時は機能が利用できません
 
 ## トラブルシューティング
 
@@ -148,17 +126,12 @@ APIの詳細については[公式ドキュメント](https://api.bungomail.com/
 3. **ClassNotFoundException: com.mysql.cj.jdbc.Driver**
    - JDBCドライバが正しく配置されているか確認
 
-4. **APIからのデータ取得エラー**
-   - インターネット接続を確認
-   - 青空文庫APIの稼働状況を確認
-
 ## 今後の拡張予定
 
-- 書籍検索機能
-- お気に入り書籍の保存
-- 読書履歴の管理
+- ログアウト機能
 - パスワードハッシュ化
-- より詳細な書籍情報表示
+- 書籍管理機能
+- 検索機能
 
 ## ライセンス
 
