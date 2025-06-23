@@ -17,12 +17,15 @@ public class BookSelector {
             while ((line = br.readLine()) != null) {
                 if (isFirst) { isFirst = false; continue; } // ヘッダー行スキップ
                 String[] cols = line.split(",", -1);
-                if (cols.length < 58) continue; // 必要な列数があるか
-                String title = cols[2]; // 作品名
-                String author = cols[16]; // 姓名
-                String category = cols[53]; // カテゴリ
-                String excerpt = cols[57]; // 書き出し
-                books.add(new Book(title, author, category, excerpt));
+                if (cols.length < 60) continue; // 必要な列数があるか
+                String title = cols[1]; // 作品名（2列目）
+                String author = cols[15]; // 姓名（16列目）
+                String category = cols[59]; // カテゴリ（60列目）
+                String excerpt = cols[57]; // 書き出し（58列目）
+                String cardUrl = cols[13]; // 図書カードURL（14列目）
+                String textUrl = cols[46]; // テキストファイルURL（47列目）
+                String htmlUrl = cols[51]; // HTMLファイルURL（52列目）
+                books.add(new Book(title, author, category, excerpt, cardUrl, textUrl, htmlUrl));
             }
         }
     }

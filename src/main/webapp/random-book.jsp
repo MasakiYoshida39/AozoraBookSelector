@@ -76,6 +76,24 @@
             border-left: 4px solid #3498db;
         }
         
+        .book-links {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .book-links .button {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            font-size: 0.9em;
+            padding: 10px 20px;
+        }
+        
+        .book-links .button:hover {
+            background: linear-gradient(135deg, #229954 0%, #27ae60 100%);
+        }
+        
         .message {
             background: #e8f5e8;
             color: #2d5a2d;
@@ -144,6 +162,10 @@
                 <div class="book-excerpt">
                     <strong>冒頭:</strong><br>
                     ${book.excerpt}
+                </div>
+                <div class="book-links">
+                    <a href="${book.cardUrl}" target="_blank" class="button">📖 図書カードを見る</a>
+                    <a href="${book.htmlUrl}" target="_blank" class="button">🌐 青空文庫で読む</a>
                 </div>
             </div>
         <% } %>

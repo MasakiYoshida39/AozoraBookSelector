@@ -5,12 +5,18 @@ public class Book {
     private String author;
     private String category;
     private String excerpt;
+    private String cardUrl;
+    private String textUrl;
+    private String htmlUrl;
 
-    public Book(String title, String author, String category, String excerpt) {
+    public Book(String title, String author, String category, String excerpt, String cardUrl, String textUrl, String htmlUrl) {
         this.title = title;
         this.author = author;
         this.category = category;
         this.excerpt = excerpt;
+        this.cardUrl = cardUrl;
+        this.textUrl = textUrl;
+        this.htmlUrl = htmlUrl;
     }
 
     public String getTitle() {
@@ -27,5 +33,17 @@ public class Book {
 
     public String getExcerpt() {
         return excerpt;
+    }
+
+    public String getCardUrl() {
+        return cardUrl;
+    }
+
+    public String getTextUrl() {
+        return textUrl;
+    }
+
+    public String getHtmlUrl() {
+        return htmlUrl;
     }
 } 
