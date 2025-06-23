@@ -172,7 +172,7 @@
         
         <div>
             <a href="random-book" class="button">🎲 別の書籍を選択</a>
-            <a href="index.html" class="button">🏠 ホームに戻る</a>
+            <a href="index.jsp" class="button">🏠 ホームに戻る</a>
         </div>
         
         <div class="footer">
