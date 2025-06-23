@@ -1,90 +1,78 @@
-# AozoraBookSelector
+# 📚 青空文庫 ランダム書籍選択システム
 
-青空文庫関連の書籍選択・管理を行うWebアプリケーションです。
+青空文庫の作品をランダムに選択し、読書のきっかけを提供するWebアプリケーションです。
 
-## 概要
+## 🌟 主な機能
 
-- **技術スタック**: Java (Jakarta EE), JSP, MySQL
-- **フレームワーク**: Servlet/JSP
-- **データベース**: MySQL
-- **Webサーバー**: Tomcat (推奨)
+### 📖 ランダム書籍選択
+- 青空文庫の作品からランダムに1冊を選択
+- 作品名、著者、カテゴリ、冒頭文を表示
+- 青空文庫の図書カードとHTML版への直接リンク
 
-## 機能
-
-- ユーザー認証（ログイン・ログアウト）
-- 新規ユーザー登録
+### 👤 ユーザー管理
+- ユーザー登録・ログイン機能
 - セッション管理
+- ユーザー情報編集
 
-## セットアップ手順
+### 🎨 モダンなUI
+- レスポンシブデザイン
+- 統一感のあるグラデーション背景
+- ホバーエフェクト付きボタン
 
-### 1. 必要な環境
+## 🛠️ 技術スタック
+
+- **バックエンド**: Java Servlet (Jakarta EE)
+- **フロントエンド**: JSP, HTML5, CSS3
+- **データ**: CSVファイル（青空文庫作品データ）
+- **サーバー**: Apache Tomcat 10.1.34
+
+## 📋 必要な環境
 
 - Java 17以上
-- MySQL 8.0以上
-- Tomcat 10以上
-- Eclipse IDE (推奨)
+- Apache Tomcat 10.1以上
+- Eclipse IDE（推奨）
 
-### 2. データベース設定
+## 🚀 セットアップ手順
 
-#### データベース作成
-```sql
-CREATE DATABASE aozora_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE aozora_db;
+### 1. プロジェクトのクローン
+```bash
+git clone [リポジトリURL]
+cd AozoraBookSelector
 ```
 
-#### ユーザーテーブル作成
-```sql
-CREATE TABLE users (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(50) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL
-);
-```
+### 2. CSVデータの準備
+1. [青空文庫API用データ](https://docs.google.com/spreadsheets/d/1n04e6POI04TBt-3HJUH10-T5cxhPZHcBWmFA4tSHjqE/edit?gid=288090143#gid=288090143)から作品リストをダウンロード
+2. `src/main/resources/books.csv` として保存
 
-#### テストユーザー追加（オプション）
-```sql
-INSERT INTO users (username, password) VALUES ('user', 'pass');
-```
+### 3. Eclipseでの設定
+1. Eclipseでプロジェクトをインポート
+2. プロジェクトをクリーン＆ビルド
+3. Tomcatサーバーを設定・起動
 
-### 3. JDBCドライバ配置
+### 4. アプリケーションの起動
+1. サーバーを起動
+2. `http://localhost:8080/AozoraBookSelector/` にアクセス
 
-1. [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/) をダウンロード
-2. `mysql-connector-j-8.0.xx.jar` を `src/main/webapp/WEB-INF/lib/` に配置
+## 📖 使用方法
 
-### 4. データベース接続設定
+### 1. ユーザー登録
+1. アプリケーションにアクセス
+2. 「📝 新規ユーザー登録」をクリック
+3. ユーザー名とパスワードを入力
+4. アカウントを作成
 
-`src/main/java/com/example/servlet/DBConfig.java` でDB接続情報（ユーザー名・パスワード・データベース名）を一元管理しています。
+### 2. ログイン
+1. ユーザー名とパスワードを入力
+2. 「🚪 ログイン」ボタンをクリック
 
-```java
-public class DBConfig {
-    public static final String JDBC_URL = "jdbc:mysql://localhost:3306/aozora_db?useSSL=false&serverTimezone=UTC";
-    public static final String DB_USER = "root"; // MySQLユーザー名
-    public static final String DB_PASSWORD = ""; // MySQLパスワード（空の場合は空文字）
-}
-```
+### 3. ランダム書籍選択
+1. メインページで「📚 ランダム書籍選択」をクリック
+2. ランダムに選ばれた書籍の情報を確認
+3. 「📖 図書カードを見る」で詳細情報を確認
+4. 「🌐 青空文庫で読む」で作品を読む
+5. 「🎲 別の書籍を選択」で新しい書籍を選択
 
-**MySQLのユーザー名やパスワード、データベース名を変更したい場合は、このファイルのみ編集してください。**
-
-### 5. プロジェクト実行
-
-1. Eclipseでプロジェクトを開く
-2. Tomcatサーバーを設定・起動
-3. ブラウザで `http://localhost:8080/AozoraBookSelector/` にアクセス
-
-## 使用方法
-
-### ログイン
-1. ログイン画面でユーザー名・パスワードを入力
-2. 「ログイン」ボタンをクリック
-3. 認証成功時はメインページに遷移
-
-### 新規ユーザー登録
-1. ログイン画面の「新規ユーザー登録」リンクをクリック
-2. ユーザー名・パスワードを入力
-3. 「登録」ボタンをクリック
-4. 登録成功時はログイン画面に戻る
-
-## プロジェクト構成
+## 📁 プロジェクト構造
 
 ```
 AozoraBookSelector/
@@ -92,47 +80,82 @@ AozoraBookSelector/
 │   └── main/
 │       ├── java/
 │       │   └── com/example/servlet/
-│       │       ├── DBConfig.java      ← DB接続情報はここで一元管理
-│       │       ├── LoginServlet.java
-│       │       ├── RegisterServlet.java
-│       │       ├── EditServlet.java
-│       │       └── LogoutServlet.java
+│       │       ├── Book.java              # 書籍データクラス
+│       │       ├── BookSelector.java      # ランダム選択ロジック
+│       │       ├── RandomBookServlet.java # ランダム書籍サーブレット
+│       │       ├── LoginServlet.java      # ログイン処理
+│       │       ├── RegisterServlet.java   # 登録処理
+│       │       └── ...
+│       ├── resources/
+│       │   └── books.csv                  # 青空文庫作品データ
 │       └── webapp/
-│           ├── index.jsp
-│           ├── login.jsp
-│           ├── register.jsp
-│           ├── edit.jsp
+│           ├── index.jsp                  # メインページ
+│           ├── login.jsp                  # ログイン画面
+│           ├── register.jsp               # 登録画面
+│           ├── random-book.jsp            # ランダム書籍表示
 │           └── WEB-INF/
-│               └── web.xml
+│               └── web.xml                # Web設定
 └── README.md
 ```
 
-## 注意事項
+## 🎯 主な機能詳細
 
-- パスワードは平文で保存されています（実運用ではハッシュ化を推奨）
-- データベース接続情報はハードコーディングされています
-- セキュリティ機能は最小限です
+### ランダム書籍選択機能
+- **データソース**: 青空文庫の作品リスト（CSV）
+- **選択ロジック**: Java Randomクラスを使用
+- **表示情報**: 作品名、著者、カテゴリ、冒頭文
+- **外部リンク**: 青空文庫の図書カードとHTML版
 
-## トラブルシューティング
+### ユーザー管理機能
+- **セッション管理**: Jakarta Servlet Session
+- **パスワード要件**: 8文字以上、英数字含む
+- **エラーハンドリング**: 適切なエラーメッセージ表示
 
-### よくあるエラー
+## 🎨 デザイン特徴
 
-1. **Access denied for user 'root'@'localhost'**
-   - MySQLのユーザー名・パスワードが正しく設定されているか確認
+- **統一感**: 全ページで統一されたグラデーション背景
+- **レスポンシブ**: スマートフォン・タブレット対応
+- **アクセシビリティ**: 適切なコントラストとフォントサイズ
+- **ユーザビリティ**: 直感的なナビゲーション
 
-2. **No database selected**
-   - JDBC接続URLにデータベース名が含まれているか確認
+## 🔧 カスタマイズ
 
-3. **ClassNotFoundException: com.mysql.cj.jdbc.Driver**
-   - JDBCドライバが正しく配置されているか確認
+### CSVデータの変更
+- `src/main/resources/books.csv` を新しいデータで置き換え
+- 列番号が異なる場合は `BookSelector.java` を修正
 
-## 今後の拡張予定
+### デザインの変更
+- 各JSPファイルのCSSを編集
+- 色やレイアウトをカスタマイズ可能
 
-- ログアウト機能
-- パスワードハッシュ化
-- 書籍管理機能
-- 検索機能
+## 🐛 トラブルシューティング
 
-## ライセンス
+### よくある問題
 
-このプロジェクトはMITライセンスの下で公開されています。 
+1. **CSVファイルが見つからない**
+   - `src/main/resources/books.csv` が存在するか確認
+   - プロジェクトをクリーン＆ビルド
+
+2. **404エラー**
+   - `web.xml` の設定を確認
+   - サーバーの再起動
+
+3. **500エラー**
+   - CSVの列番号を確認
+   - サーバーログを確認
+
+## 📝 ライセンス
+
+このプロジェクトは教育目的で作成されています。
+
+## 🤝 貢献
+
+バグ報告や機能要望は、Issueとして報告してください。
+
+## 📞 サポート
+
+技術的な質問や問題がある場合は、プロジェクトのIssueページをご利用ください。
+
+---
+
+**青空文庫の作品を楽しんでください！** 📚✨ 
