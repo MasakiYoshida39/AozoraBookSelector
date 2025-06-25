@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.net.URLEncoder;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -51,10 +50,7 @@ public class RegisterServlet extends HttpServlet {
                             insertStmt.setString(2, password);
                             int result = insertStmt.executeUpdate();
                             if (result > 0) {
-                                // 登録成功時はセッションにuserをセットし、index.jspにリダイレクト
-                                request.getSession().setAttribute("user", username);
-                                response.sendRedirect("index.jsp");
-                                return;
+                                message = "ユーザー登録が完了しました。ログインしてください。";
                             } else {
                                 error = "登録に失敗しました。";
                             }
