@@ -135,7 +135,7 @@
         <form method="post" action="login">
             <div class="form-group">
                 <label for="username">ユーザー名</label>
-                <input type="text" id="username" name="username" required />
+                <input type="text" id="username" name="username" required value="<%= request.getParameter("username") != null ? request.getParameter("username") : "" %>" />
             </div>
             
             <div class="form-group">

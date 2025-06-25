@@ -151,7 +151,7 @@
 <body>
     <div class="container">
         <div class="app-title">📚 青空文庫 ランダム書籍選択</div>
-        <h2>新規ユーザー登録</h2>
+    <h2>新規ユーザー登録</h2>
         
         <% if (request.getAttribute("error") != null) { %>
             <div class="error-message">
@@ -165,7 +165,7 @@
             </div>
         <% } %>
         
-        <form method="post" action="register">
+    <form method="post" action="register">
             <div class="form-group">
                 <label for="username">ユーザー名</label>
                 <input type="text" id="username" name="username" required 
@@ -183,7 +183,7 @@
             </div>
             
             <button type="submit" class="register-button">📝 アカウント作成</button>
-        </form>
+    </form>
         
         <div class="password-requirements">
             <h4>🔒 パスワード要件</h4>

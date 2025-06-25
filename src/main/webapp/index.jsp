@@ -75,7 +75,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>ようこそ、<%= user %>さん！</h2>
+    <h2>ようこそ、<%= user %>さん！</h2>
         <div class="welcome-message">
             ログインに成功しました。
         </div>

@@ -171,7 +171,7 @@
 <body>
     <div class="container">
         <div class="app-title">📚 青空文庫 ランダム書籍選択</div>
-        <h2>ユーザー情報編集</h2>
+    <h2>ユーザー情報編集</h2>
         
         <div class="current-user">
             現在のユーザー: <strong><%= user %></strong>
@@ -189,7 +189,7 @@
             </div>
         <% } %>
         
-        <form method="post" action="edit">
+    <form method="post" action="edit">
             <div class="form-group">
                 <label for="username">ユーザー名</label>
                 <input type="text" id="username" name="username" required 
@@ -207,7 +207,7 @@
             </div>
             
             <button type="submit" class="update-button">🔄 情報を更新</button>
-        </form>
+    </form>
         
         <div class="password-note">
             <h4>💡 パスワード変更について</h4>
@@ -216,7 +216,7 @@
         
         <div class="home-link">
             <a href="index.jsp">🏠 メインページへ戻る</a>
-        </div>
+    </div>
     </div>
 </body>
 </html> 
