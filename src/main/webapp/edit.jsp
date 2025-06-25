@@ -166,12 +166,50 @@
             margin: 0;
             line-height: 1.4;
         }
+        
+        .delete-account-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #e74c3c;
+        }
+        
+        .delete-account-section h3 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .delete-button {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .delete-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .delete-warning {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #c53030;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="app-title">📚 青空文庫 ランダム書籍選択</div>
-    <h2>ユーザー情報編集</h2>
+        <h2>ユーザー情報編集</h2>
         
         <div class="current-user">
             現在のユーザー: <strong><%= user %></strong>
@@ -189,7 +227,7 @@
             </div>
         <% } %>
         
-    <form method="post" action="edit">
+        <form method="post" action="edit">
             <div class="form-group">
                 <label for="username">ユーザー名</label>
                 <input type="text" id="username" name="username" required 
@@ -207,16 +245,32 @@
             </div>
             
             <button type="submit" class="update-button">🔄 情報を更新</button>
-    </form>
+        </form>
         
         <div class="password-note">
             <h4>💡 パスワード変更について</h4>
             <p>パスワードを変更しない場合は、パスワード欄を空欄のままにしてください。</p>
         </div>
         
+        <div class="delete-account-section">
+            <h3>⚠️ アカウント削除</h3>
+            <div class="delete-warning">
+                <strong>注意:</strong> アカウントを削除すると、すべてのデータが完全に削除され、復元できません。
+            </div>
+            <form method="post" action="delete-account" onsubmit="return confirmDelete()">
+                <button type="submit" class="delete-button">🗑️ アカウントを削除</button>
+            </form>
+        </div>
+        
         <div class="home-link">
             <a href="index.jsp">🏠 メインページへ戻る</a>
+        </div>
     </div>
-    </div>
+    
+    <script>
+        function confirmDelete() {
+            return confirm("本当にアカウントを削除しますか？\nこの操作は取り消せません。");
+        }
+    </script>
 </body>
 </html> 

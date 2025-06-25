@@ -126,13 +126,31 @@
 <body>
     <div class="container">
         <div class="app-title">📚 青空文庫 ランダム書籍選択</div>
-        <h2>ログイン</h2>
+    <h2>ログイン</h2>
         
         <% if ("1".equals(request.getParameter("logout"))) { %>
             <div class="success-message">ログアウトしました。</div>
         <% } %>
         
-        <form method="post" action="login">
+        <% if (request.getParameter("registered") != null) { %>
+            <div class="success-message">
+                ✅ ユーザー登録が完了しました！自動的にログインしました。
+            </div>
+        <% } %>
+        
+        <% if (request.getParameter("deleted") != null) { %>
+            <div class="success-message">
+                ✅ アカウントが正常に削除されました。ご利用ありがとうございました。
+            </div>
+        <% } %>
+        
+        <% if (request.getAttribute("error") != null) { %>
+            <div class="error-message">
+                ❌ ユーザー名またはパスワードが間違っています。
+            </div>
+        <% } %>
+        
+    <form method="post" action="login">
             <div class="form-group">
                 <label for="username">ユーザー名</label>
                 <input type="text" id="username" name="username" required value="<%= request.getParameter("username") != null ? request.getParameter("username") : "" %>" />
@@ -144,7 +162,7 @@
             </div>
             
             <button type="submit" class="login-button">🚪 ログイン</button>
-        </form>
+    </form>
         
         <div class="register-link">
             <a href="register.jsp">📝 新規ユーザー登録</a>
