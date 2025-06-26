@@ -95,6 +95,8 @@ AozoraBookSelector/
 │           ├── random-book.jsp            # ランダム書籍表示
 │           └── WEB-INF/
 │               └── web.xml                # Web設定
+├── COPYRIGHT.md                           # コピーライト・ライセンス情報
+├── LICENSE                                # MIT License
 └── README.md
 ```
 
@@ -146,7 +148,9 @@ AozoraBookSelector/
 
 ## 📝 ライセンス
 
-このプロジェクトは教育目的で作成されています。
+このプロジェクトは [MIT License](LICENSE) の下で公開されています。
+
+詳細な著作権・ライセンス情報については [COPYRIGHT.md](COPYRIGHT.md) をご覧ください。
 
 ## 🤝 貢献
 
