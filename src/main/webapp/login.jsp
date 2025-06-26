@@ -159,7 +159,12 @@
 <body>
     <div class="container">
         <div class="app-title">📚 青空文庫 ランダム書籍選択</div>
-    <h2>ログイン</h2>
+    <h2>
+    <div class="guest-link">
+            <a href="random-book">🎲 ゲストでランダム書籍を見る</a>
+        </div>
+        <!-- ログイン -->
+    </h2>
         
         <% if ("1".equals(request.getParameter("logout"))) { %>
             <div class="success-message">ログアウトしました。</div>
@@ -194,19 +199,17 @@
                 <input type="password" id="password" name="password" required />
             </div>
             
-            <button type="submit" class="login-button">🚪 ログイン</button>
+            <button type="submit" class="login-button">🚪 ログイン(工事中の為使用不可)</button>
     </form>
         
         <div class="register-link">
-            <a href="register.jsp">📝 新規ユーザー登録</a>
+            <a href="register.jsp">📝 新規ユーザー登録(工事中の為使用不可)</a>
         </div>
-        <div class="guest-link">
-            <a href="random-book">🎲 ゲストでランダム書籍を見る</a>
-        </div>
+        
     </div>
     
     <div class="copyright">
-        © 2024 AozoraBookSelector Project | 
+        © 2025 AozoraBookSelector Project | 
         <a href="https://www.aozora.gr.jp/" target="_blank">青空文庫</a>の作品データを使用
     </div>
 </body>

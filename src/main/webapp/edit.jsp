@@ -264,7 +264,7 @@
                 <input type="password" id="confirm_password" name="confirm_password" />
             </div>
             
-            <button type="submit" class="update-button">🔄 情報を更新</button>
+            <button type="submit" class="update-button">🔄 情報を更新(工事中の為使用不可)</button>
         </form>
         
         <div class="password-note">
@@ -288,7 +288,7 @@
     </div>
     
     <div class="copyright">
-        © 2024 AozoraBookSelector Project | 
+        © 2025 AozoraBookSelector Project | 
         <a href="https://www.aozora.gr.jp/" target="_blank">青空文庫</a>の作品データを使用
     </div>
     

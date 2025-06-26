@@ -103,13 +103,13 @@
         
         <div>
             <a href="random-book" class="button">📚 ランダム書籍選択</a>
-            <a href="edit.jsp" class="button">👤 ユーザー情報編集</a>
+            <a href="edit.jsp" class="button">👤 ユーザー情報編集(工事中の為使用不可)</a>
             <a href="logout" class="button logout-button">🚪 ログアウト</a>
         </div>
     </div>
     
     <div class="copyright">
-        © 2024 AozoraBookSelector Project | 
+        © 2025 AozoraBookSelector Project | 
         <a href="https://www.aozora.gr.jp/" target="_blank">青空文庫</a>の作品データを使用
     </div>
 </body>

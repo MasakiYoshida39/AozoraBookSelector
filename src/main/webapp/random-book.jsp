@@ -201,7 +201,7 @@
     </div>
     
     <div class="copyright">
-        © 2024 AozoraBookSelector Project | 
+        © 2025 AozoraBookSelector Project | 
         <a href="https://www.aozora.gr.jp/" target="_blank">青空文庫</a>の作品データを使用
     </div>
 </body>

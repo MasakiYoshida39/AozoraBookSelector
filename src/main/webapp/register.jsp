@@ -202,7 +202,7 @@
                 <input type="password" id="confirm_password" name="confirm_password" required />
             </div>
             
-            <button type="submit" class="register-button">📝 アカウント作成</button>
+            <button type="submit" class="register-button">📝 アカウント作成(工事中の為使用不可)</button>
     </form>
         
         <div class="password-requirements">
@@ -220,7 +220,7 @@
     </div>
     
     <div class="copyright">
-        © 2024 AozoraBookSelector Project | 
+        © 2025 AozoraBookSelector Project | 
         <a href="https://www.aozora.gr.jp/" target="_blank">青空文庫</a>の作品データを使用
     </div>
 </body>
