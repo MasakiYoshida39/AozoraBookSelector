@@ -204,6 +204,26 @@
             font-size: 0.9em;
             color: #c53030;
         }
+        
+        .copyright {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.8em;
+            text-align: center;
+            z-index: 1000;
+        }
+        
+        .copyright a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+        }
+        
+        .copyright a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -265,6 +285,11 @@
         <div class="home-link">
             <a href="index.jsp">🏠 メインページへ戻る</a>
         </div>
+    </div>
+    
+    <div class="copyright">
+        © 2024 AozoraBookSelector Project | 
+        <a href="https://www.aozora.gr.jp/" target="_blank">青空文庫</a>の作品データを使用
     </div>
     
     <script>

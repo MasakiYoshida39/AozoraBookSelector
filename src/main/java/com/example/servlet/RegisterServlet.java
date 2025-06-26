@@ -1,19 +1,20 @@
 package com.example.servlet;
 
+
+import static com.example.servlet.DBConfig.*;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.net.URLEncoder;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import static com.example.servlet.DBConfig.*;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {

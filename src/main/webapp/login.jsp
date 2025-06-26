@@ -97,6 +97,19 @@
             color: #764ba2;
         }
         
+        .guest-link {
+            margin-top: 15px;
+        }
+        .guest-link a {
+            color: #27ae60;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .guest-link a:hover {
+            color: #229954;
+        }
+        
         .error-message {
             background: #ffe6e6;
             color: #d63031;
@@ -120,6 +133,26 @@
             font-size: 0.9em;
             margin-bottom: 30px;
             opacity: 0.8;
+        }
+        
+        .copyright {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.8em;
+            text-align: center;
+            z-index: 1000;
+        }
+        
+        .copyright a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+        }
+        
+        .copyright a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -167,6 +200,14 @@
         <div class="register-link">
             <a href="register.jsp">📝 新規ユーザー登録</a>
         </div>
+        <div class="guest-link">
+            <a href="random-book">🎲 ゲストでランダム書籍を見る</a>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        © 2024 AozoraBookSelector Project | 
+        <a href="https://www.aozora.gr.jp/" target="_blank">青空文庫</a>の作品データを使用
     </div>
 </body>
 </html> 
