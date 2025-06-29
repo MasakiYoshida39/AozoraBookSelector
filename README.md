@@ -53,34 +53,6 @@ cd AozoraBookSelector
 1. サーバーを起動
 2. `http://localhost:8080/AozoraBookSelector/` にアクセス
 
-## ☁️ AWSデプロイ
-
-### 前提条件
-- AWSアカウント
-- AWS CLIのインストールと設定
-- 適切なIAM権限
-
-### クイックデプロイ
-```bash
-# ビルドスクリプトに実行権限を付与
-chmod +x build.sh
-chmod +x deploy-eb.sh
-
-# WARファイルを作成
-./build.sh
-
-# Elastic Beanstalkにデプロイ
-./deploy-eb.sh
-```
-
-### 詳細なデプロイ方法
-詳細な手順は [aws-deploy-guide.md](aws-deploy-guide.md) を参照してください。
-
-**対応デプロイ方法:**
-- ✅ AWS Elastic Beanstalk（推奨）
-- ✅ EC2 + Tomcat
-- ✅ Docker + ECS
-
 ## 📖 使用方法
 
 ### 1. ユーザー登録
@@ -123,10 +95,6 @@ AozoraBookSelector/
 │           ├── random-book.jsp            # ランダム書籍表示
 │           └── WEB-INF/
 │               └── web.xml                # Web設定
-├── build.sh                               # WARファイルビルドスクリプト
-├── deploy-eb.sh                           # Elastic Beanstalkデプロイスクリプト
-├── Dockerfile                             # Docker設定
-├── aws-deploy-guide.md                    # AWSデプロイ詳細ガイド
 └── README.md
 ```
 
@@ -175,10 +143,6 @@ AozoraBookSelector/
 3. **500エラー**
    - CSVの列番号を確認
    - サーバーログを確認
-
-4. **AWSデプロイエラー**
-   - [aws-deploy-guide.md](aws-deploy-guide.md) のトラブルシューティングを参照
-   - AWS CLIの設定を確認
 
 ## 📝 ライセンス
 
