@@ -1,1 +1,0 @@
-web: java -jar $CATALINA_HOME/bin/bootstrap.jar 
